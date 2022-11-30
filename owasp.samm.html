@@ -1,0 +1,283 @@
+<html>
+<style>
+html{
+	font-family: Arial, Helvetica, sans-serif;
+	color:white;
+	
+}
+table,tr,td{
+	border: 1px solid;
+	border-collapse: collapse;
+	text-align: center;
+	padding: 5px;
+}
+.governance{
+	background-color:#435b70;
+}
+.design{
+	background-color:#ca5902;
+}
+.implementation{
+	background-color:#45712d;
+}
+.verification{
+	background-color:#754858;
+}
+.operations{
+	background-color:#5b5b62;
+}
+</style>
+<script>
+
+const en_us = {
+	g  :"Governance", 
+	d  :"Design", 
+	i  :"Implementation",
+	v  :"Verification",
+	o  :"Operations",
+	g1 :"Strategy &amp; Metrics",
+	g1a:"Create &amp; Promote",
+	g1b:"Measure &amp; Improve",
+	g2 :"Policy &amp; Compliance",
+	g2a:"Policy &amp; Standards",
+	g2b:"Compliance Management",
+	g3 :"Education &amp; Guidance",
+	g3a:"Training &amp; Awareness",
+	g3b:"Organization &amp; Culture",
+	d1 :"Threat Assessment",
+	d1a:"Application Risk Profile",
+	d1b:"Threat Modeling",
+	d2 :"Security Requirements",
+	d2a:"Software Requirements",
+	d2b:"Supplier Security",
+	d3 :"Security Architecture",
+	d3a:"Architecture Design",
+	d3b:"Technology Management",
+	i1 :"Secure Build",
+	i1a:"Build Process",
+	i1b:"Software Dependencies",
+	i2 :"Secure Deployment",
+	i2a:"Deployment Process",
+	i2b:"Secret Management",
+	i3 :"Defect Management",
+	i3a:"Defect Tracking",
+	i3b:"Metrics &amp; Feedback",
+	v1 :"Architecture Assessment",
+	v1a:"Architecture Validation",
+	v1b:"Architecture Mitigation",
+	v2 :"Requirements-driven Testing",
+	v2a:"Control Verification",
+	v2b:"Misuse/Abuse Testing",
+	v3 :"Security Testing",
+	v3a:"Scalable Baseline",
+	v3b:"Deep Understanding",
+	o1 :"Incident Management",
+	o1a:"Incident Detection",
+	o1b:"Incident Response",
+	o2 :"Environment Management",
+	o2a:"Configuration Hardening",
+	o2b:"Patching &amp; Updating",
+	o3 :"Operational Management",
+	o3a:"Data Protection",
+	o3b:"Legacy Management"
+};
+
+const pt_br = {
+	g  :"Governan&ccedil;a", 
+	d  :"Desenho", 
+	i  :"Implementa&ccedil;&atilde;o",
+	v  :"Verifica&ccedil;&atilde;o",
+	o  :"Opera&ccedil;&atilde;o",
+	g1 :"Estrat&eacute;gia &amp; M&eacute;tricas",
+	g1a:"Criar &amp; Promover",
+	g1b:"Medir &amp; Aprimorar",
+	g2 :"Pol&iacute;tica &amp; Conformidade",
+	g2a:"Pol&iacute;tica &amp; Padr&otilde;es",
+	g2b:"Gest&atilde;o de Conformidade",
+	g3 :"Educa&ccedil;&atilde;o &amp; Orienta&ccedil;&atilde;o",
+	g3a:"Treinamento &amp; Conscientiza&ccedil;&atilde;o",
+	g3b:"Organiza&ccedil;&atilde;o &amp; Cultura",
+	d1 :"Avalia&ccedil;&atilde;o de Amea&ccedil;a",
+	d1a:"Perfil de Risco de Aplica&ccedil;&atilde;o",
+	d1b:"Modelagem de Amea&ccedil;a",
+	d2 :"Requisitos de Seguran&ccedil;a",
+	d2a:"Requisitos de Software",
+	d2b:"Seguran&ccedil;a de Fornecedores",
+	d3 :"Arquitetura de Seguran&ccedil;a",
+	d3a:"Desenho de Arquitetura",
+	d3b:"Gest&atilde;o de Tecnologia",
+	i1 :"Constru&ccedil;&atilde;o Segura",
+	i1a:"Processo de Constru&ccedil;&atilde;o",
+	i1b:"Depend&ecirc;ncias de Software",
+	i2 :"Implanta&ccedil;&atilde;o Segura",
+	i2a:"Processo de Implanta&ccedil;&atilde;o",
+	i2b:"Gest&atilde;o de Segredos",
+	i3 :"Gest&atilde;o de Defeitos",
+	i3a:"Rastreamento de Defeitos",
+	i3b:"M&eacute;tricas &amp; Feedback",
+	v1 :"Avalia&ccedil;&atilde;o de Arquitetura",
+	v1a:"Valida&ccedil;&atilde;o de Arquitetura",
+	v1b:"Mitiga&ccedil;&atilde;o de Arquitetura",
+	v2 :"Testes Orientados a Requisitos",
+	v2a:"Verifica&ccedil;&atilde;o de Controles",
+	v2b:"Testes de Abuso",
+	v3 :"Testes de Seguran&ccedil;a",
+	v3a:"Linha de Base Escal&aacute;vel",
+	v3b:"Compreens&atilde;o Profunda",
+	o1 :"Gest&atilde;o de Incidentes",
+	o1a:"Detec&ccedil;&atilde;o de Incidentes",
+	o1b:"Resposta a Incidentes",
+	o2 :"Gest&atilde;o de Ambientes",
+	o2a:"Configuration Hardening",
+	o2b:"Corre&ccedil;&atilde;o &amp; Atualiza&ccedil;&atilde;o",
+	o3 :"Gest&atilde;o Operacional",
+	o3a:"Prote&ccedil;&atilde;o de Dados",
+	o3b:"Gest&atilde;o de Legados"
+};
+
+function changeCaptions(text){
+
+	document.getElementById('g').innerHTML = text.g;
+	document.getElementById('d').innerHTML = text.d;
+	document.getElementById('i').innerHTML = text.i;
+	document.getElementById('v').innerHTML = text.v;
+	document.getElementById('o').innerHTML = text.o;
+
+    document.getElementById('g1').innerHTML  = text.g1;
+	document.getElementById('g1a').innerHTML = text.g1a;
+	document.getElementById('g1b').innerHTML = text.g1b;
+	
+    document.getElementById('g2').innerHTML  = text.g2;
+	document.getElementById('g2a').innerHTML = text.g2a;
+	document.getElementById('g2b').innerHTML = text.g2b;
+
+    document.getElementById('g3').innerHTML  = text.g3;
+	document.getElementById('g3a').innerHTML = text.g3a;
+	document.getElementById('g3b').innerHTML = text.g3b;
+
+    document.getElementById('d1').innerHTML  = text.d1;
+	document.getElementById('d1a').innerHTML = text.d1a;
+	document.getElementById('d1b').innerHTML = text.d1b;
+	
+    document.getElementById('d2').innerHTML  = text.d2;
+	document.getElementById('d2a').innerHTML = text.d2a;
+	document.getElementById('d2b').innerHTML = text.d2b;
+
+    document.getElementById('d3').innerHTML  = text.d3;
+	document.getElementById('d3a').innerHTML = text.d3a;
+	document.getElementById('d3b').innerHTML = text.d3b;
+
+    document.getElementById('i1').innerHTML  = text.i1;
+	document.getElementById('i1a').innerHTML = text.i1a;
+	document.getElementById('i1b').innerHTML = text.i1b;
+	
+    document.getElementById('i2').innerHTML  = text.i2;
+	document.getElementById('i2a').innerHTML = text.i2a;
+	document.getElementById('i2b').innerHTML = text.i2b;
+
+    document.getElementById('i3').innerHTML  = text.i3;
+	document.getElementById('i3a').innerHTML = text.i3a;
+	document.getElementById('i3b').innerHTML = text.i3b;
+
+    document.getElementById('v1').innerHTML  = text.v1;
+	document.getElementById('v1a').innerHTML = text.v1a;
+	document.getElementById('v1b').innerHTML = text.v1b;
+	
+    document.getElementById('v2').innerHTML  = text.v2;
+	document.getElementById('v2a').innerHTML = text.v2a;
+	document.getElementById('v2b').innerHTML = text.v2b;
+
+    document.getElementById('v3').innerHTML  = text.v3;
+	document.getElementById('v3a').innerHTML = text.v3a;
+	document.getElementById('v3b').innerHTML = text.v3b;
+
+    document.getElementById('o1').innerHTML  = text.o1;
+	document.getElementById('o1a').innerHTML = text.o1a;
+	document.getElementById('o1b').innerHTML = text.o1b;
+	
+    document.getElementById('o2').innerHTML  = text.o2;
+	document.getElementById('o2a').innerHTML = text.o2a;
+	document.getElementById('o2b').innerHTML = text.o2b;
+
+    document.getElementById('o3').innerHTML  = text.o3;
+	document.getElementById('o3a').innerHTML = text.o3a;
+	document.getElementById('o3b').innerHTML = text.o3b;
+	
+}
+
+function changeLanguage(obj){
+
+	var value = obj.value; 
+
+	if (value == "en_us"){
+		changeCaptions(en_us);
+	}else if (value == "pt_br"){
+		changeCaptions(pt_br);
+	}
+	
+}
+
+</script>
+<body onload="changeCaptions(en_us)">
+<table>
+	<tr>
+	<td class="governance" id="g"></td>
+	<td></td>
+	<td class="design" id="d"></td>
+	<td></td>
+	<td class="implementation" id="i"></td>
+	<td></td>
+	<td class="verification" id="v"></td>
+	<td></td>
+	<td class="operations" id="o"></td>
+	</tr>
+	
+	<tr><td colspan=5></td></tr>
+
+	<tr>
+	<td class="governance"><table><tr><td colspan=2 id="g1"></td></tr><tr>    <td width="50%" id="g1a"></td><td width="50%" id="g1b"></td></tr></table>	</td>
+	<td></td>
+	<td class="design"><table><tr><td colspan=2 id="d1"></td></tr><tr>        <td width="50%" id="d1a"></td><td width="50%" id="d1b"></td></tr></table></td>
+	<td></td>
+	<td class="implementation"><table><tr><td colspan=2 id="i1"></td></tr><tr><td width="50%" id="i1a"></td><td width="50%" id="i1b"></td></tr></table></td>
+	<td></td>
+	<td class="verification"><table><tr><td colspan=2 id="v1"></td></tr><tr>  <td width="50%" id="v1a"></td><td width="50%" id="v1b"></td></tr></table></td>
+	<td></td>
+	<td class="operations"><table><tr><td colspan=2 id="o1"></td></tr><tr>    <td width="50%" id="o1a"></td><td width="50%" id="o1b"></td></tr></table></td>
+	</tr>
+
+	<tr><td colspan=5></td></tr>
+
+	<tr>
+	<td class="governance"><table><tr><td colspan=2 id="g2"></td></tr><tr>    <td width="50%" id="g2a"></td><td width="50%" id="g2b"></td></tr></table></td>
+	<td></td>
+	<td class="design"><table><tr><td colspan=2 id="d2"></td></tr><tr>        <td width="50%" id="d2a"></td><td width="50%" id="d2b"></td></tr></table></td>
+	<td></td>
+	<td class="implementation"><table><tr><td colspan=2 id="i2"></td></tr><tr><td width="50%" id="i2a"></td><td width="50%" id="i2b"></td></tr></table></td>
+	<td></td>
+	<td class="verification"><table><tr><td colspan=2 id="v2"></td></tr><tr>  <td width="50%" id="v2a"></td><td width="50%" id="v2b"></td></tr></table></td>
+	<td></td>
+	<td class="operations"><table><tr><td colspan=2 id="o2"></td></tr><tr>    <td width="50%" id="o2a"></td><td width="50%" id="o2b"></td></tr></table></td>
+	</tr>
+
+	<tr><td colspan=5></td></tr>
+
+	<tr>
+	<td class="governance"><table><tr><td colspan=2 id="g3"></td></tr><tr>    <td width="50%" id="g3a"></td><td width="50%" id="g3b"></td></tr></table></td>
+	<td></td>
+	<td class="design"><table><tr><td colspan=2 id="d3"></td></tr><tr>        <td width="50%" id="d3a"></td><td width="50%" id="d3b"></td></tr></table></td>
+	<td></td>
+	<td class="implementation"><table><tr><td colspan=2 id="i3"></td></tr><tr><td width="50%" id="i3a"></td><td width="50%" id="i3b"></td></tr></table></td>
+	<td></td>
+	<td class="verification"><table><tr><td colspan=2 id="v3"></td></tr><tr>  <td width="50%" id="v3a"></td><td width="50%" id="v3b"></td></tr></table></td>
+	<td></td>
+	<td class="operations"><table><tr><td colspan=2 id="o3"></td></tr><tr>     <td width="50%" id="o3a"></td><td width="50%" id="o3b"></td></tr></table></td>
+	</tr>
+
+</table>
+
+<select onchange="changeLanguage(this)">
+<option value="en_us">English</option>
+<option value="pt_br">Portugu&ecirc;s</option>
+</select>
+</html>
